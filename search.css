@@ -207,3 +207,49 @@ RESULTS
 */
 
 
+#results .container {
+    margin-top: 36px;
+}
+
+.results__header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.results__header:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    width: 100%;
+    background-color: #dc143c;
+    padding-left: -48px;
+    padding-right: -48px;
+}
+
+.results__header--title {
+    font-size: 20px;
+    color: #444;
+}
+
+.movies {
+    margin: 56px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie {
+    width: calc(100% / 5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #444;
+    color: white;
+    padding: 8px;
+}
+
+
+
