@@ -12,15 +12,50 @@
     <nav>
         <div class="nav__content">
             <figure class="nav__logo--wrapper">
-                <img src="./logo(1).png" alt="" class="nav__logo--img">
+                <img src="./assets/logo(1).png" alt="" class="nav__logo--img">
                 <h2 class="nav__logo--name">Next<span class="crimson">Flick</span></h2>
             </figure>
             <ul class="nav__link--list">
-                <li class="nav__link">Home</li>
-                <li class="nav__link">Find your movie</li>
-                <li class="nav__link nav__link--primary">Browse</li>
+                <li><a href="./index.html" class="nav__link">Home</a></li>
+                <li><a href="./search.html" class="nav__link">Find your movie</a></li>
+                <li><a href="./search.html" class="nav__link nav__link--primary">Browse</a></li>
             </ul>
         </div>
     </nav>
+    <section id="search">
+        <div class="container">
+            <div class="row">
+                <div class="search__bar">
+                        <input type="text" placeholder="Search movies..." class="search__input"></input>
+                        <button class="search__btn">
+                            <i class="fa solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <section id="results">
+        <div class="container">
+            <div class="row">
+                <div class="results__header">
+                    <h1 class="section__title">Search results:</h1>
+                    <select id="filter">
+                        <option value="" disabled selected>Sort by</option>
+                        <option value="A_TO_Z">Sort A-Z</option>
+                        <option value="Z_TO_A">Sort Z-A</option>
+                        <option value="NEW_TO_OLD">Sort newest to oldest</option>
+                        <option value="OLD_TO_NEW">Sort oldest to newest</option>
+                    </select>
+                </div>
+                <div class="movies">
+                    <div class="movie">
+                        <img src="./assets/NextFlick--Background.jpg" alt="" class="movie__poster">
+                        <h3 class="movie__title">Title</h3>
+                        <p class="movie__year">Year</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

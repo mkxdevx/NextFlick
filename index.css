@@ -6,12 +6,20 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow: hidden;
+}
+
 img {
     width: 100%;
 }
 
 li {
     list-style-type: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 button {
@@ -21,6 +29,14 @@ button {
 .crimson {
     color: #dc143c;
     font-weight: bold;
+}
+
+.container {
+    margin: 56px 0;
+}
+
+.row {
+    padding: 0 48px;
 }
 
 
@@ -78,8 +94,6 @@ nav {
     z-index: 1;
 }
 
-
-
 .nav__link:after {
     content: '';
     position: absolute;
@@ -128,14 +142,6 @@ LANDING PAGE
 #landing {
     margin: 20px 0;
 
-}
-
-.container {
-    margin: 56px 0;
-}
-
-.row {
-    padding: 0 48px;
 }
 
 .landing__content {
