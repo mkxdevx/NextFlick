@@ -209,16 +209,34 @@ SEARCH
     justify-content: center;
 }
 
-.fa-magnifying-glass {
+.fa-magnifying-glass,
+.fa-circle-notch {
     color: white;
     font-size: 28px;
     font-weight: 600;
+}
+
+.fa-circle-notch {
+    opacity: 0;
+    animation: spin 600ms linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);
+    }
+    100% {transform: rotate(360deg);
+    }
+}
+
+.fa-magnifying-glass {
+    opacity: 1;
     transition: all 300ms ease;
 }
 
 .search__btn:active .fa-magnifying-glass {
     color: #242424;
 }
+
 
 
 /* 
@@ -230,6 +248,11 @@ RESULTS
 
 #results .container {
     margin-top: 36px;
+    margin-bottom: 72px;
+}
+
+#results .row {
+    padding: 0 80px;
 }
 
 .results__header {
@@ -280,19 +303,31 @@ RESULTS
     padding: 8px;
     margin: 0 8px;
     margin-bottom: 12px;
+    cursor: not-allowed;
+}
+
+.movie:hover .movie__poster {
+    transform: scale(1.2);
 }
 
 .movie__poster {
-    height: 150px;
+    transition: all 300ms ease;
+    height: 200px;
+    object-fit: contain;
 }
 
 .movie__title {
+    text-align: center;
     font-size: 16px;
-    color: whitesmoke;
+    color: white;
     margin-top: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .movie__year {
+    text-align: center;
     color: #708090;
     font-size: 14px;
 }
@@ -305,8 +340,9 @@ FOOTER
 */
 
 
-#footer .container {
+footer .container {
     margin-top: 98px;
+    margin-bottom: 24px;
 }
 
 .footer__links {
@@ -314,11 +350,10 @@ FOOTER
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 164px;
+    height: 216px;
     justify-content: flex-start;
     align-items: center;
-    padding-top:  48px;
-    margin-bottom: 24px;
+    padding:  48px 0;
 } 
 
 .footer__links:before {
@@ -366,7 +401,6 @@ FOOTER
 
 .footer__bottom {
     position: relative;
-    margin: 32px 0;
     padding-top: 36px;
     display: flex;
     flex-direction: column;
@@ -376,7 +410,8 @@ FOOTER
 
 .footer__logo {
     padding-bottom: 8px;
-    max-width: 50px;
+    max-width: 60px;
+    height: 60px;
 }
 
 .footer__socials {
@@ -400,5 +435,5 @@ FOOTER
 .footer__copyright {
     margin-top: 16px;
     font-size: 14px;
-    color: #dc143c;
+    color: white;
 }
