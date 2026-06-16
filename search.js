@@ -1,23 +1,15 @@
 const moviesListEl = document.querySelector('.movies');
 const input = document.querySelector('.search__input');
+const searchButton = document.querySelector('.search__btn');
 
 async function searchMovies(searchTerm) {
+
     const movies = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=a314fffb`);
     const moviesData = await movies.json();
-
-    console.log(moviesData);
-
-    // if (moviesData.Response === "False") {
-    //     moviesListEl.innerHTML = `<p>${Response.Error}</p>`;
-    //     return;
-    // }
-
-    moviesListEl.innerHTML = moviesData.Search
-        .map(movie => movieData(movie))
-        .join('');
+    moviesListEl.innerHTML = moviesData.Search.map(movie => movieData(movie)).join('');
 }
 
-searchMovies("batman");
+searchMovies("movie");
 
 function movieData(movie) {
     return `<div class="movie">
@@ -28,8 +20,15 @@ function movieData(movie) {
     </div>`;
 }
 
-function handleSearch() {
+function handleSearch(event) {
+    event.preventDefault();
+    searchButton.classList += " loading";
+
     searchMovies(input.value);
+
+    searchButton.classList.remove("loading");
+    
+    console.log(searchButton)
 }
 
 input.addEventListener('keydown', (e) => {
