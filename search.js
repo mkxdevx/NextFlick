@@ -2,10 +2,17 @@ const moviesListEl = document.querySelector('.movies');
 const input = document.querySelector('.search__input');
 const searchButton = document.querySelector('.search__btn');
 
-async function searchMovies(searchTerm) {
 
+async function searchMovies(searchTerm) {
     const movies = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=a314fffb`);
     const moviesData = await movies.json();
+
+    if (!moviesData.Search) {
+        moviesListEl.innerHTML = `<div class="movie__no-results">
+        <h3>No movies found for <span class="crimson">"${searchTerm}"</span></h3>`;
+        searchButton.classList.remove("loading");
+    }
+
     moviesListEl.innerHTML = moviesData.Search.map(movie => movieData(movie)).join('');
 }
 
@@ -20,19 +27,25 @@ function movieData(movie) {
     </div>`;
 }
 
-function handleSearch(event) {
-    event.preventDefault();
-    searchButton.classList += " loading";
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-    searchMovies(input.value);
+async function handleSearch(event) {
+    event.preventDefault();
+    searchButton.classList.add("loading");
+
+    await searchMovies(input.value);
+
+    await delay(200);
 
     searchButton.classList.remove("loading");
-    
-    console.log(searchButton)
+
 }
 
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-        searchMovies(input.value);
+        return handleSearch(event);
     }
-})
+});
+
