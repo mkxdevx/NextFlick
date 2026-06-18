@@ -182,6 +182,7 @@ LANDING PAGE
     border-radius: 50px;
     outline: none;
     font-size: 20px;
+    color: white;
 }
 
 .landing__search--input::placeholder {

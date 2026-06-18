@@ -3,8 +3,9 @@ const input = document.querySelector('.search__input');
 const searchButton = document.querySelector('.search__btn');
 const resultsHeaderEl = document.querySelector('.results__header--title');
 const filterEl = document.querySelector('#filter');
+const searchTerm = localStorage.getItem('search');
 let currentSearchTerm = "";
-
+let allMovies = [];
 
 async function searchMovies(searchTerm, showHeader = true) {
     currentSearchTerm = searchTerm;
@@ -15,18 +16,21 @@ async function searchMovies(searchTerm, showHeader = true) {
         moviesListEl.innerHTML = `<div class="movie__no-results">
         <h3>No movies found for <span class="crimson">"${searchTerm}"</span></h3>`;
         searchButton.classList.remove("loading");
+        return;
     }
 
-    let moviesSearchList = moviesData.Search;
-    moviesSearchList = filterMovies(moviesSearchList);
-    moviesListEl.innerHTML = moviesSearchList.map(movie => movieData(movie)).join('');
-
-    if(showHeader) {
-        resultsHeaderEl.innerHTML = `<h1 class="results__header--title">Search results for <span class="crimson">"${searchTerm}"</span></h1>`;
-    }
+    allMovies = moviesData.Search;
+    renderMovies(allMovies, showHeader);
 }
 
-searchMovies("movie", false);
+if (searchTerm) {
+    input.value = searchTerm;
+    searchMovies(searchTerm);
+    localStorage.removeItem('search');
+    } 
+    else {
+        searchMovies("movie", false);
+    }
 
 function movieData(movie) {
     return `<div class="movie">
@@ -58,9 +62,20 @@ function filterMovies(movies) {
     return movies;
 }
 
+function renderMovies(movies, showHeader = true) {
+    const filteredMovies = filterMovies([...movies]);
+
+    moviesListEl.innerHTML = filteredMovies.map(movie => movieData(movie)).join('');
+
+    if(showHeader) {
+        resultsHeaderEl.innerHTML = `
+        <h1 class="results__header--title">Search results for <span class="crimson">"${searchTerm}"</span></h1>`;
+    }
+}
+
 function handleFilterChange(event) {
     if(currentSearchTerm) {
-        searchMovies(currentSearchTerm);
+        renderMovies(allMovies);
     }
 }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
-    <script src="./index.js"></script>
+    <script src="./index.js" defer></script>
     <script src="https://kit.fontawesome.com/d79943a144.js" crossorigin="anonymous"></script>
     <title>NextFlick</title>
 </head>
@@ -29,7 +29,7 @@
                     <img src="./assets/logo-light(2).png" alt="" class="landing__logo">
                     <div class="landing__search">
                         <input type="text" placeholder="Search movies..." class="landing__search--input"></input>
-                        <button class="landing__search--btn">
+                        <button class="landing__search--btn" onclick="handleSearch(event)">
                             <i class="fa solid fa-magnifying-glass"></i>
                         </button>
                     </div>
