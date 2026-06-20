@@ -349,6 +349,48 @@ RESULTS
     text-align: center;
 }
 
+.movie__skeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skeleton {
+    background-color: #333;
+    border-radius: 4px;
+    margin: 10px 0;
+    animation: pulse 1.5s infinite;
+}
+
+.skeleton__img {
+    height: 200px;
+    width: 100%;
+}
+
+.skeleton__text--title {
+    margin-top: 8px;
+    height: 20px;
+    width: 80%;
+}
+
+.skeleton__text--year {
+    height: 20px;
+    width: 60%;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: #333;
+    }
+    50% {
+        background-color: #444;
+    }
+    100% {
+        background-color: #333;
+    }
+}
+
+
 /* 
 
 FOOTER 

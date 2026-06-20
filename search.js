@@ -9,12 +9,12 @@ let allMovies = [];
 
 async function searchMovies(searchTerm, showHeader = true) {
     currentSearchTerm = searchTerm;
-    const movies = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=a314fffb`);
+    const movies = await fetch(`https://www.omdbapi.com/?s=${currentSearchTerm}&apikey=a314fffb`);
     const moviesData = await movies.json();
 
     if (!moviesData.Search) {
         moviesListEl.innerHTML = `<div class="movie__no-results">
-        <h3>No movies found for <span class="crimson">"${searchTerm}"</span></h3>`;
+        <h3>No movies found for <span class="crimson">"${currentSearchTerm}"</span></h3>`;
         searchButton.classList.remove("loading");
         return;
     }
@@ -69,7 +69,7 @@ function renderMovies(movies, showHeader = true) {
 
     if(showHeader) {
         resultsHeaderEl.innerHTML = `
-        <h1 class="results__header--title">Search results for <span class="crimson">"${searchTerm}"</span></h1>`;
+        <h1 class="results__header--title">Search results for <span class="crimson">"${currentSearchTerm}"</span></h1>`;
     }
 }
 
