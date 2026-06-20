@@ -9,6 +9,9 @@ let allMovies = [];
 
 async function searchMovies(searchTerm, showHeader = true) {
     currentSearchTerm = searchTerm;
+
+    renderMovieSkeletons();
+
     const movies = await fetch(`https://www.omdbapi.com/?s=${currentSearchTerm}&apikey=a314fffb`);
     const moviesData = await movies.json();
 
@@ -32,7 +35,7 @@ if (searchTerm) {
         searchMovies("movie", false);
     }
 
-function movieData(movie) {
+function movieHtml(movie) {
     return `<div class="movie">
         <img src="${movie.Poster}" class="movie__poster"
         onerror="this.closest('.movie').remove()" >
@@ -65,7 +68,7 @@ function filterMovies(movies) {
 function renderMovies(movies, showHeader = true) {
     const filteredMovies = filterMovies([...movies]);
 
-    moviesListEl.innerHTML = filteredMovies.map(movie => movieData(movie)).join('');
+    moviesListEl.innerHTML = filteredMovies.map(movie => movieHtml(movie)).join('');
 
     if(showHeader) {
         resultsHeaderEl.innerHTML = `
@@ -83,6 +86,18 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function movieSkeletonHtml() {
+    return `<div class="movie__skeleton">
+        <div class="skeleton skeleton__img"></div>
+        <div class="skeleton skeleton__text--title"></div>
+        <div class="skeleton skeleton__text--year"></div>
+    </div>`
+}
+
+function renderMovieSkeletons(count = 10) {
+    moviesListEl.innerHTML = Array(count).fill(0).map(() => movieSkeletonHtml()).join('');
+}
+
 async function handleSearch(event) {
     event.preventDefault();
     searchButton.classList.add("loading");
@@ -91,9 +106,7 @@ async function handleSearch(event) {
 
     await delay(200);
 
-
     searchButton.classList.remove("loading");
-
 }
 
 input.addEventListener('keydown', (e) => {

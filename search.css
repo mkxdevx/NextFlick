@@ -305,13 +305,13 @@ RESULTS
     justify-content: flex-start;
 }
 
-.movie {
-    width: calc((100% / 5) - 16px);
+.movie, 
+.movie__skeleton {
+    width: calc((100% / 8) - 16px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 2px;
-    padding: 8px;
     margin: 0 8px;
     margin-bottom: 12px;
     cursor: not-allowed;
@@ -367,13 +367,13 @@ RESULTS
     width: 100%;
 }
 
-.skeleton__text--title {
+.skeleton__movie--title {
     margin-top: 8px;
     height: 20px;
     width: 80%;
 }
 
-.skeleton__text--year {
+.skeleton__movie--year {
     height: 20px;
     width: 60%;
 }

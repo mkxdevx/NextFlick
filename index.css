@@ -320,6 +320,7 @@ footer .container {
     position: relative;
     padding: 8px 0;
     font-size: 14px;
+    font-weight: 600;
     color: #e0e0e0;
 }
 
@@ -328,7 +329,11 @@ footer .container {
 }
 
 .footer__copyright {
-    margin-top: 16px;
-    font-size: 14px;
+    margin-top: 20px;
+    font-size: 12px;
     color: white;
+}
+
+@media (max-width: 1024px) {
+    
 }
