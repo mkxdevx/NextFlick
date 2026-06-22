@@ -20,6 +20,19 @@
                 <li><a href="./search.html" class="nav__link">Find your movie</a></li>
                 <li><a href="./search.html" class="nav__link nav__link--primary">Browse</a></li>
             </ul>
+            <button class="menu__btn menu__btn--open" onclick="openMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="nav__overlay">
+            <div class="menu__btn menu__btn--close" onclick="closeMenu()">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+                <ul class="nav__overlay--list">
+                    <li><a href="./index.html" class="nav__overlay--link" onclick="closeMenu()">Home</a></li>
+                    <li><a href="./search.html" class="nav__overlay--link" onclick="closeMenu()">Find your movie</a></li>
+                    <li><a href="./search.html" class="nav__overlay--link">Browse</a></li>
+                </ul>
         </div>
     </nav>
     <section id="landing">
